@@ -206,6 +206,11 @@
     margin: 0 auto;
     padding: 0 2rem;
     padding-top: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
 
   .hero-badge {
@@ -240,9 +245,9 @@
   .hero-tagline {
     font-size: clamp(1rem, 2vw, 1.25rem);
     color: rgba(255,255,255,0.75);
-    max-width: 560px;
+    max-width: 600px;
     line-height: 1.7;
-    margin-bottom: 2.5rem;
+    margin: 0 auto 2.5rem;
     animation: fadeUp 0.8s 0.4s ease both;
     font-weight: 300;
   }
@@ -251,6 +256,7 @@
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
     animation: fadeUp 0.8s 0.6s ease both;
   }
 
@@ -296,12 +302,13 @@
   }
 
   .hero-stats {
-    position: absolute;
-    bottom: 3rem;
-    right: 2rem;
+    margin-top: 4rem;
     display: flex;
-    gap: 2rem;
+    justify-content: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    flex-wrap: wrap;
     animation: fadeUp 0.8s 0.8s ease both;
+    width: 100%;
   }
 
   .stat {
@@ -1195,7 +1202,7 @@
     .gallery-item:nth-child(5) { grid-column: span 1; }
     .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .hero-stats { position: static; margin-top: 3rem; justify-content: flex-start; }
+    .hero-stats { margin-top: 3rem; gap: 1.5rem; }
     .form-row { grid-template-columns: 1fr; }
     .chat-window { width: calc(100vw - 2rem); right: 1rem; }
   }
