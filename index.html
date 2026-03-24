@@ -55,6 +55,16 @@
     margin-left: 10px;
   }
 
+  .blink-text {
+    animation: alertBlink 1.5s infinite;
+  }
+
+  @keyframes alertBlink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+  }
+
   /* ===== NAVBAR ===== */
   nav {
     position: fixed;
@@ -1298,7 +1308,7 @@
 
 <!-- ADMISSION TOP BAR -->
 <div class="top-bar">
-  <span>🎓 Admissions Open for Session 2024-25!</span>
+  <span class="blink-text">🎓 Admissions Open for Session 2024-25!</span>
   <a href="#contact">Apply Now</a>
 </div>
 
