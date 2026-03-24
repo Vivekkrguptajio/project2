@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krishna Institute of Pharmacy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --green: #1a6b3c;
+    --green-light: #2d9e5f;
+    --green-pale: #e8f5ee;
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --dark: #0f1c14;
+    --text: #2c3e30;
+    --text-muted: #6b7c6f;
+    --white: #ffffff;
+    --off-white: #f7faf8;
+    --border: #d4e6da;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(15, 28, 20, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--dark);
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-text span:first-child {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  .logo-text span:last-child {
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px; left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 60%; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* ===== HERO ===== */
+  #home {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1563213126-a4273aed2016?w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.35);
+    transform: scale(1.05);
+    animation: heroZoom 12s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.0); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15,28,20,0.85) 0%, rgba(26,107,60,0.5) 60%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    padding-top: 72px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201, 168, 76, 0.15);
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    color: var(--gold-light);
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-title .accent { color: var(--gold); }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255,255,255,0.75);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.4s ease both;
+    font-weight: 300;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), #b8973f);
+    color: var(--dark);
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.4);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.6);
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 3rem;
+    right: 2rem;
+    display: flex;
+    gap: 2rem;
+    animation: fadeUp 0.8s 0.8s ease both;
+  }
+
+  .stat {
+    text-align: center;
+    color: var(--white);
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 6rem 2rem; }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    display: inline-block;
+    color: var(--green);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1.4rem;
+    height: 2px;
+    background: var(--gold);
+    transform: translateY(-50%);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    max-width: 600px;
+  }
+
+  /* ===== ABOUT ===== */
+  #about { background: var(--off-white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-image-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .about-image-wrap img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .about-image-wrap:hover img { transform: scale(1.04); }
+
+  .about-image-wrap::before {
+    content: '';
+    position: absolute;
+    top: -12px; left: -12px;
+    width: 60%;
+    height: 60%;
+    border: 3px solid var(--gold);
+    border-radius: 20px;
+    z-index: -1;
+  }
+
+  .about-image-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: -12px; right: -12px;
+    width: 50%;
+    height: 50%;
+    background: var(--green-pale);
+    border-radius: 20px;
+    z-index: -1;
+  }
+
+  .about-content { padding-right: 1rem; }
+
+  .about-features {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .about-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 1rem;
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+
+  .about-feature:hover {
+    border-color: var(--green-light);
+    box-shadow: 0 4px 20px rgba(26,107,60,0.1);
+    transform: translateY(-2px);
+  }
+
+  .about-feature-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--green-pale);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .about-feature h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  .about-feature p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* ===== COURSES ===== */
+  #courses { background: var(--white); }
+
+  .courses-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+
+  .course-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+  .course-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(26,107,60,0.12);
+    border-color: var(--green-light);
+  }
+
+  .course-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .course-card:hover .course-img { transform: scale(1.06); }
+
+  .course-img-wrap { overflow: hidden; }
+
+  .course-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+  }
+
+  .course-body {
+    padding: 1.5rem;
+  }
+
+  .course-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--green-pale);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .course-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.4rem;
+  }
+
+  .course-full { font-size: 0.8rem; color: var(--green); font-weight: 600; margin-bottom: 0.75rem; }
+
+  .course-body p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .course-meta {
+    display: flex;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .course-meta span {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .course-meta i { color: var(--green); }
+
+  /* ===== FACILITIES ===== */
+  #facilities { background: var(--off-white); }
+
+  .facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .facility-card {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    height: 320px;
+  }
+
+  .facility-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+
+  .facility-card:hover img { transform: scale(1.08); }
+
+  .facility-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15,28,20,0.92) 0%, rgba(15,28,20,0.2) 60%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .facility-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--gold);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .facility-overlay h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .facility-overlay p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .facility-card:hover .facility-overlay p { max-height: 100px; }
+
+  /* ===== GALLERY ===== */
+  #gallery { background: var(--dark); }
+  #gallery .section-tag { color: var(--gold); }
+  #gallery .section-title { color: var(--white); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .gallery-item {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .gallery-item:nth-child(5) { grid-column: span 2; }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 200px;
+    transition: transform 0.5s ease, filter 0.3s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.06);
+    filter: brightness(1.1);
+  }
+
+  .gallery-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26,107,60,0.6);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+  }
+
+  .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+  /* ===== CONTACT ===== */
+  #contact { background: var(--white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+  }
+
+  .contact-info p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.3s;
+  }
+
+  .contact-item:hover {
+    border-color: var(--green-light);
+    background: var(--green-pale);
+  }
+
+  .contact-item-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--green);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+
+  .contact-item h5 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--green);
+    margin-bottom: 3px;
+  }
+
+  .contact-item p {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .contact-form {
+    background: var(--off-white);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group { margin-bottom: 1.25rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--white);
+    transition: all 0.3s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(26,107,60,0.1);
+  }
+
+  .form-group textarea { height: 130px; resize: vertical; }
+
+  .form-submit {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--green), var(--green-light));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(26,107,60,0.35);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.7);
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand .logo { margin-bottom: 1.25rem; }
+  .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 280px; }
+
+  .footer-socials {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .social-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+  }
+
+  .social-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  .footer-col h5 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; }
+  .footer-col ul li a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.88rem;
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ===== CHATBOT ===== */
+  .chatbot-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--green), var(--green-light));
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 6px 30px rgba(26,107,60,0.45);
+    z-index: 9999;
+    transition: all 0.3s;
+  }
+
+  .chatbot-btn:hover { transform: scale(1.1); box-shadow: 0 8px 40px rgba(26,107,60,0.6); }
+
+  .chat-window {
+    position: fixed;
+    bottom: 6.5rem;
+    right: 2rem;
+    width: 360px;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.2);
+    z-index: 9998;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    animation: chatPop 0.3s ease;
+  }
+
+  @keyframes chatPop {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .chat-window.open { display: flex; }
+
+  .chat-header {
+    background: linear-gradient(135deg, var(--green), var(--green-light));
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+  }
+
+  .chat-avatar {
+    width: 38px;
+    height: 38px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .chat-header-info h4 { font-size: 0.95rem; font-weight: 600; }
+  .chat-header-info span { font-size: 0.75rem; opacity: 0.75; display: flex; align-items: center; gap: 4px; }
+  .chat-header-info span::before { content: ''; width: 6px; height: 6px; background: #6EE895; border-radius: 50%; }
+
+  .chat-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .chat-close:hover { opacity: 1; }
+
+  .chat-messages {
+    padding: 1.25rem;
+    height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background: #f9fbfa;
+  }
+
+  .msg {
+    max-width: 85%;
+    padding: 0.7rem 1rem;
+    border-radius: 14px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    animation: msgIn 0.25s ease;
+  }
+
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .msg.bot {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+    color: var(--text);
+  }
+
+  .msg.user {
+    background: linear-gradient(135deg, var(--green), var(--green-light));
+    color: white;
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
+  }
+
+  .chat-input-row {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--border);
+    background: var(--white);
+  }
+
+  .chat-input-row input {
+    flex: 1;
+    padding: 0.65rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .chat-input-row input:focus { border-color: var(--green); }
+
+  .chat-send {
+    width: 40px;
+    height: 40px;
+    background: var(--green);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .chat-send:hover { background: var(--green-light); transform: scale(1.05); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .courses-grid { grid-template-columns: repeat(2, 1fr); }
+    .facilities-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: rgba(15,28,20,0.98);
+      flex-direction: column;
+      padding: 1.5rem 2rem;
+      gap: 0.25rem;
+      display: none;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-image-wrap { order: -1; }
+    .about-image-wrap img { height: 350px; }
+    .courses-grid { grid-template-columns: 1fr; }
+    .facilities-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+    .gallery-item:nth-child(5) { grid-column: span 1; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats { position: static; margin-top: 3rem; justify-content: flex-start; }
+    .form-row { grid-template-columns: 1fr; }
+    .chat-window { width: calc(100vw - 2rem); right: 1rem; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 4rem 1.25rem; }
+    .facilities-grid { grid-template-columns: 1fr; }
+    .about-features { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="logo">
+      <div class="logo-icon">⚕️</div>
+      <div class="logo-text">
+        <span>Krishna Institute</span>
+        <span>of Pharmacy</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#facilities">Facilities</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🎓 Established 1998 · PCI Approved</div>
+    <h1 class="hero-title">
+      Krishna Institute<br>of <span class="accent">Pharmacy</span>
+    </h1>
+    <p class="hero-tagline">Shaping Future Pharmacists with world-class education, cutting-edge research, and ethical practice since 1998.</p>
+    <div class="hero-buttons">
+      <a href="#courses" class="btn-primary"><i class="fas fa-book-open"></i> Explore Courses</a>
+      <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">25+</span><span class="stat-label">Years</span></div>
+      <div class="stat"><span class="stat-num">5000+</span><span class="stat-label">Alumni</span></div>
+      <div class="stat"><span class="stat-num">95%</span><span class="stat-label">Placement</span></div>
+      <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Faculty</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80" alt="College campus">
+      </div>
+      <div class="about-content reveal">
+        <span class="section-tag">About Us</span>
+        <h2 class="section-title">Nurturing Excellence in Pharmaceutical Sciences</h2>
+        <p class="section-desc">Founded in 1998, Krishna Institute of Pharmacy is a premier institution dedicated to pharmaceutical education and research. Approved by the Pharmacy Council of India (PCI) and affiliated to a recognized university, we provide a holistic learning environment that blends academic rigour with practical exposure.</p>
+        <p class="section-desc" style="margin-top:1rem;">Our state-of-the-art infrastructure, experienced faculty, and industry connections ensure that our graduates are well-equipped to lead in the ever-evolving world of pharmacy and healthcare.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon"><i class="fas fa-flask"></i></div>
+            <div><h4>Modern Labs</h4><p>Fully equipped pharmaceutical labs</p></div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon"><i class="fas fa-user-tie"></i></div>
+            <div><h4>Expert Faculty</h4><p>50+ experienced professors</p></div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon"><i class="fas fa-building"></i></div>
+            <div><h4>PCI Approved</h4><p>Recognized by Pharmacy Council</p></div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon"><i class="fas fa-handshake"></i></div>
+            <div><h4>Industry Ties</h4><p>Strong pharma industry network</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="container">
+    <div class="courses-header reveal">
+      <div>
+        <span class="section-tag">Academic Programs</span>
+        <h2 class="section-title">Our Courses</h2>
+      </div>
+      <p class="section-desc">PCI-approved programs designed for comprehensive pharmaceutical education and career growth.</p>
+    </div>
+    <div class="courses-grid">
+      <!-- D.Pharm -->
+      <div class="course-card reveal">
+        <div class="course-img-wrap">
+          <img class="course-img" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" alt="D.Pharm">
+        </div>
+        <span class="course-badge">2 Years</span>
+        <div class="course-body">
+          <div class="course-icon"><i class="fas fa-capsules"></i></div>
+          <h3>D.Pharm</h3>
+          <p class="course-full">Diploma in Pharmacy</p>
+          <p>A foundational diploma program covering pharmaceutical sciences, drug dispensing, and patient care fundamentals. Ideal for aspiring pharmacy technicians.</p>
+          <div class="course-meta">
+            <span><i class="fas fa-clock"></i> 2 Years</span>
+            <span><i class="fas fa-users"></i> 60 Seats</span>
+            <span><i class="fas fa-certificate"></i> PCI Approved</span>
+          </div>
+        </div>
+      </div>
+      <!-- B.Pharm -->
+      <div class="course-card reveal">
+        <div class="course-img-wrap">
+          <img class="course-img" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600&q=80" alt="B.Pharm">
+        </div>
+        <span class="course-badge">4 Years</span>
+        <div class="course-body">
+          <div class="course-icon"><i class="fas fa-microscope"></i></div>
+          <h3>B.Pharm</h3>
+          <p class="course-full">Bachelor of Pharmacy</p>
+          <p>A comprehensive undergraduate degree in pharmaceutical sciences encompassing pharmacology, medicinal chemistry, clinical pharmacy, and industrial pharmacy.</p>
+          <div class="course-meta">
+            <span><i class="fas fa-clock"></i> 4 Years</span>
+            <span><i class="fas fa-users"></i> 60 Seats</span>
+            <span><i class="fas fa-certificate"></i> PCI Approved</span>
+          </div>
+        </div>
+      </div>
+      <!-- M.Pharm -->
+      <div class="course-card reveal">
+        <div class="course-img-wrap">
+          <img class="course-img" src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&q=80" alt="M.Pharm">
+        </div>
+        <span class="course-badge">2 Years</span>
+        <div class="course-body">
+          <div class="course-icon"><i class="fas fa-atom"></i></div>
+          <h3>M.Pharm</h3>
+          <p class="course-full">Master of Pharmacy</p>
+          <p>An advanced postgraduate program with specializations in Pharmaceutics, Pharmacology, and Pharmaceutical Chemistry for research and leadership roles.</p>
+          <div class="course-meta">
+            <span><i class="fas fa-clock"></i> 2 Years</span>
+            <span><i class="fas fa-users"></i> 18 Seats</span>
+            <span><i class="fas fa-certificate"></i> PCI Approved</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section id="facilities">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:0;">
+      <span class="section-tag">Campus Life</span>
+      <h2 class="section-title">World-Class Facilities</h2>
+      <p class="section-desc" style="margin:0 auto;">Our campus is equipped with everything students need for academic excellence and personal growth.</p>
+    </div>
+    <div class="facilities-grid">
+      <div class="facility-card reveal">
+        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80" alt="Library">
+        <div class="facility-overlay">
+          <div class="facility-icon"><i class="fas fa-book"></i></div>
+          <h3>Digital Library</h3>
+          <p>20,000+ volumes, e-journals, and 24/7 digital access to global pharmaceutical databases.</p>
+        </div>
+      </div>
+      <div class="facility-card reveal">
+        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80" alt="Laboratories">
+        <div class="facility-overlay">
+          <div class="facility-icon"><i class="fas fa-flask"></i></div>
+          <h3>Research Labs</h3>
+          <p>State-of-the-art pharmaceutical labs with advanced instruments for practical and research training.</p>
+        </div>
+      </div>
+      <div class="facility-card reveal">
+        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80" alt="Hostel">
+        <div class="facility-overlay">
+          <div class="facility-icon"><i class="fas fa-home"></i></div>
+          <h3>Hostel</h3>
+          <p>Separate, well-maintained hostels for boys and girls with all modern amenities and 24/7 security.</p>
+        </div>
+      </div>
+      <div class="facility-card reveal">
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80" alt="Placement">
+        <div class="facility-overlay">
+          <div class="facility-icon"><i class="fas fa-briefcase"></i></div>
+          <h3>Placement Cell</h3>
+          <p>Dedicated placement cell with 95% placement record, connecting students with top pharma companies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-tag">Campus Gallery</span>
+      <h2 class="section-title">Life at Krishna</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&q=80" alt="Campus">
+        <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&q=80" alt="Lab">
+        <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=500&q=80" alt="Classroom">
+        <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&q=80" alt="Students">
+        <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&q=80" alt="Pharmacy">
+        <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=500&q=80" alt="Events">
+        <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Contact Us</h2>
+        <p>We'd love to hear from you! Whether you have questions about admissions, courses, or facilities — our team is here to help.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div><h5>Address</h5><p>Krishna Campus, Pharmacy Road, Pharma Nagar, State – 400001</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+            <div><h5>Phone</h5><p>+91 98765 43210 / +91 12345 67890</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+            <div><h5>Email</h5><p>info@krishnapharma.edu.in</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1.5rem;color:var(--dark);">Send a Message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="How can we help?">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Write your message here..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="logo">
+        <div class="logo-icon">⚕️</div>
+        <div class="logo-text">
+          <span>Krishna Institute</span>
+          <span>of Pharmacy</span>
+        </div>
+      </a>
+      <p>Shaping Future Pharmacists with excellence in education, research, and ethical pharmaceutical practice since 1998.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="#courses">D.Pharm</a></li>
+        <li><a href="#courses">B.Pharm</a></li>
+        <li><a href="#courses">M.Pharm</a></li>
+        <li><a href="#">Ph.D. Pharmacy</a></li>
+        <li><a href="#">Admissions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact Info</h5>
+      <ul>
+        <li><a href="#">📍 Pharmacy Road, Pharma Nagar</a></li>
+        <li><a href="#">📞 +91 98765 43210</a></li>
+        <li><a href="#">✉️ info@krishnapharma.edu.in</a></li>
+        <li><a href="#">🕒 Mon–Sat: 9AM – 5PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Krishna Institute of Pharmacy. All rights reserved.</span>
+    <span>Made with ❤️ for pharmaceutical excellence</span>
+  </div>
+</footer>
+
+<!-- CHATBOT -->
+<button class="chatbot-btn" onclick="toggleChat()" id="chatBtn" title="Chat with us">
+  <i class="fas fa-comment-dots" id="chatIcon"></i>
+</button>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+    <div class="chat-header-info">
+      <h4>KIP Assistant</h4>
+      <span>Online now</span>
+    </div>
+    <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="msg bot">👋 Hi! I'm the KIP virtual assistant. How can I help you today?<br><br>Try typing: <strong>hello</strong>, <strong>courses</strong>, or <strong>contact</strong></div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleKey(event)">
+    <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script>
+  // NAV
+  function toggleNav() {
+    const nav = document.getElementById('navLinks');
+    const ham = document.getElementById('hamburger');
+    nav.classList.toggle('open');
+    ham.classList.toggle('active');
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('active');
+    });
+  });
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // STICKY NAV STYLE
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 60) {
+      nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.25)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  // CHATBOT
+  function toggleChat() {
+    const win = document.getElementById('chatWindow');
+    const icon = document.getElementById('chatIcon');
+    win.classList.toggle('open');
+    icon.className = win.classList.contains('open') ? 'fas fa-times' : 'fas fa-comment-dots';
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+    addMessage(msg, 'user');
+    input.value = '';
+    setTimeout(() => addMessage(getReply(msg), 'bot'), 500);
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter') sendMessage();
+  }
+
+  function addMessage(text, type) {
+    const container = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.className = `msg ${type}`;
+    div.innerHTML = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function getReply(msg) {
+    const m = msg.toLowerCase();
+    if (m.includes('hello') || m.includes('hi') || m.includes('hey'))
+      return '🎓 Welcome to Krishna Institute of Pharmacy! How can I assist you?';
+    if (m.includes('courses') || m.includes('program') || m.includes('pharm'))
+      return '📚 We offer:<br>• <b>D.Pharm</b> – 2-year Diploma<br>• <b>B.Pharm</b> – 4-year Bachelor\'s<br>• <b>M.Pharm</b> – 2-year Master\'s<br>All PCI approved!';
+    if (m.includes('contact') || m.includes('address') || m.includes('phone') || m.includes('email'))
+      return '📞 Contact us via the form on our website, call <b>+91 98765 43210</b>, or email <b>info@krishnapharma.edu.in</b>';
+    if (m.includes('admission') || m.includes('apply'))
+      return '📝 Admissions are open! Visit our Courses section or call us at <b>+91 98765 43210</b> for details.';
+    if (m.includes('fee') || m.includes('fees'))
+      return '💰 Fees vary by program. Please contact our admissions office at <b>info@krishnapharma.edu.in</b> for the fee structure.';
+    if (m.includes('facilit') || m.includes('hostel') || m.includes('library') || m.includes('lab'))
+      return '🏛️ Our facilities include:<br>• Digital Library<br>• Research Labs<br>• Separate Hostels<br>• Dedicated Placement Cell';
+    if (m.includes('placement') || m.includes('job'))
+      return '💼 We have a <b>95% placement record</b>! Our placement cell connects students with top pharmaceutical companies.';
+    return '🤔 Sorry, I didn\'t understand that. Try asking about <b>courses</b>, <b>admissions</b>, <b>facilities</b>, or <b>contact</b>.';
+  }
+
+  // FORM SUBMIT
+  function submitForm() {
+    alert('✅ Thank you for your message! Our team will contact you within 24 hours.');
+  }
+</script>
+
+</body>
+</html>
