@@ -32,10 +32,33 @@
     overflow-x: hidden;
   }
 
+  /* ===== ADMISSION TOP BAR ===== */
+  .top-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 40px;
+    background: var(--gold);
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .top-bar a {
+    color: var(--dark);
+    text-decoration: underline;
+    margin-left: 10px;
+  }
+
   /* ===== NAVBAR ===== */
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 40px; left: 0; right: 0;
     z-index: 1000;
     background: rgba(15, 28, 20, 0.95);
     backdrop-filter: blur(12px);
@@ -157,12 +180,12 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1563213126-a4273aed2016?w=1600&q=80');
+    background-image: url('hero.png');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.35);
+    filter: brightness(0.45);
     transform: scale(1.05);
-    animation: heroZoom 12s ease-in-out infinite alternate;
+    animation: heroZoom 15s ease-in-out infinite alternate;
   }
 
   @keyframes heroZoom {
@@ -1065,6 +1088,77 @@
 
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* ===== NOTICE MODAL ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+  }
+
+  .modal-overlay.active { display: flex; }
+
+  .modal-content {
+    background: var(--white);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    animation: modalScale 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes modalScale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .modal-header {
+    background: var(--green);
+    padding: 1.5rem;
+    color: white;
+    text-align: center;
+  }
+
+  .modal-body {
+    padding: 2.5rem;
+    text-align: center;
+  }
+
+  .modal-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+  }
+
+  .modal-body p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .modal-close-btn {
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .modal-close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(201,168,76,0.3);
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
     .courses-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1109,6 +1203,12 @@
 </style>
 </head>
 <body>
+
+<!-- ADMISSION TOP BAR -->
+<div class="top-bar">
+  <span>🎓 Admissions Open for Session 2024-25!</span>
+  <a href="#contact">Apply Now</a>
+</div>
 
 <!-- NAVBAR -->
 <nav id="navbar">
@@ -1469,7 +1569,32 @@
   </div>
 </div>
 
+<!-- NOTICE MODAL -->
+<div class="modal-overlay" id="noticeModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <i class="fas fa-bullhorn" style="font-size: 2rem;"></i>
+    </div>
+    <div class="modal-body">
+      <h3>Important Notice</h3>
+      <p>Admissions for the upcoming academic year are now open! Explore our world-class D.Pharm, B.Pharm, and M.Pharm programs today.</p>
+      <button class="modal-close-btn" onclick="closeNotice()">Understood</button>
+    </div>
+  </div>
+</div>
+
 <script>
+  // SHOW MODAL ON LOAD
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('noticeModal').classList.add('active');
+    }, 1000);
+  });
+
+  function closeNotice() {
+    document.getElementById('noticeModal').classList.remove('active');
+  }
+
   // NAV
   function toggleNav() {
     const nav = document.getElementById('navLinks');
